@@ -37,9 +37,9 @@ export default function ActivityFeed({ activities, onDelete, onEdit, onClear, on
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14, flexWrap: "wrap", gap: 8 }}>
         <h2 style={{ fontSize: "0.9rem", fontWeight: 500, color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.08em" }}>Activity Feed</h2>
         <div style={{ display: "flex", gap: 8 }}>
-          <button onClick={onExport} style={{ ...chipBase, color: "var(--accent2)", borderColor: "var(--accent2)" }}>↓ Export CSV</button>
+          <button onClick={onExport} style={{ ...chipBase, color: "var(--accent2)", borderColor: "var(--accent2)" }}> Export CSV</button>
           {activities.length > 0 && (
-            <button onClick={() => { if (window.confirm("Clear all activities?")) onClear(); }} style={{ ...chipBase, color: "var(--danger)", borderColor: "var(--danger)" }}>✕ Clear All</button>
+            <button onClick={() => { if (window.confirm("Clear all activities?")) onClear(); }} style={{ ...chipBase, color: "var(--danger)", borderColor: "var(--danger)" }}> Clear All</button>
           )}
         </div>
       </div>
@@ -120,7 +120,7 @@ export default function ActivityFeed({ activities, onDelete, onEdit, onClear, on
                 </div>
                 <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
                   <button onClick={() => startEdit(a)} style={{ background: "none", border: "none", cursor: "pointer", color: "var(--muted)", fontSize: "0.78rem", fontFamily: "'JetBrains Mono', monospace" }}>Edit</button>
-                  <button onClick={() => onDelete(a.id)} style={{ background: "none", border: "none", cursor: "pointer", color: "var(--danger)", fontSize: "1rem", lineHeight: 1 }}>✕</button>
+                  <button onClick={() => onDelete(a.id)} style={{ background: "none", border: "none", cursor: "pointer", color: "var(--danger)", fontSize: "1rem", lineHeight: 1 }}>Clear</button>
                 </div>
               </div>
             )}
