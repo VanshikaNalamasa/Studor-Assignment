@@ -5,6 +5,8 @@ A student activity tracker built as part of the Studor Builder Screening Project
 ## How to run locally
 
 ```bash
+git clone https://github.com/VanshikaNalamasa/Studor-Assignment.git
+cd pathcredit-logger
 npm install
 npm run dev
 ```
@@ -19,7 +21,16 @@ A single-page React app (Vite) where students can log activities and track their
 
 **Activity Feed** - lists all logged activities with multi-category filtering, a search bar, and sort controls (newest, oldest, A–Z). Each card supports inline editing and deletion. Empty states and no-results states are handled separately.
 
-**PathCredit Score** -  each category earns weighted points (Technical: 2, Academic: 2, Cultural: 2, Sports: 2), shown as a running total alongside a day streak counter and category breakdown bar.
+**PathCredit Score** — activities contribute to a running total using a uniform scoring model, where each category (Technical, Academic, Cultural, Sports) is assigned equal weight. The total score is displayed alongside a day streak counter and category breakdown bar.
+
+## Edge Cases Handled
+
+- Prevents empty or whitespace-only activity names
+- Requires category and date selection
+- Blocks future dates
+- Warns on duplicate entries (same name + date)
+- Handles empty activity state and no-results filters
+- Enforces 100-character limit on activity name
 
 **Milestone Badges** - earned on first activity per category and at count thresholds (5, 10, 25 activities).
 
@@ -34,3 +45,9 @@ A single-page React app (Vite) where students can log activities and track their
 - **PathCredit weighting UI** - let counselors configure point values per category per institution rather than hardcoding them
 - **Backend sync** - swap localStorage for a Node/Express API so data persists across devices and can feed into Studor's behavioral data pipeline
 - **Activity notes field** - a short free-text field per entry for context, useful for counselor review
+
+  ## Tech Stack
+
+- React (Vite)
+- JavaScript
+- LocalStorage (for persistence)
