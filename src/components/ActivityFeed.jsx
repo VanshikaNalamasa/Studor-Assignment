@@ -50,21 +50,24 @@ export default function ActivityFeed({ activities, onDelete, onEdit, onClear, on
         onBlur={(e) => e.target.style.borderColor = "var(--border)"}
       />
 
-      <div style={{ display: "flex", gap: 6, marginBottom: 10, flexWrap: "wrap" }}>
-        {CATEGORIES.map((c) => {
-          const count = activities.filter((a) => a.category === c).length;
-          const active = activeCategories.includes(c);
-          return (
-            <button key={c} onClick={() => toggleCategory(c)}
-              style={{ ...chipBase, background: active ? CAT_COLORS[c] + "22" : "transparent", color: active ? CAT_COLORS[c] : "var(--muted)", borderColor: active ? CAT_COLORS[c] : "var(--border)" }}>
-              {c} <span style={{ opacity: 0.7 }}>{count}</span>
-            </button>
-          );
-        })}
-        {activeCategories.length > 0 && (
-          <button onClick={() => setActiveCategories([])} style={{ ...chipBase, color: "var(--muted)" }}>clear</button>
-        )}
-      </div>
+     <div style={{ display: "flex", gap: 6, marginBottom: 10, flexWrap: "wrap" }}>
+  <button
+    onClick={() => setActiveCategories([])}
+    style={{ ...chipBase, background: activeCategories.length === 0 ? "var(--surface2)" : "transparent", color: activeCategories.length === 0 ? "var(--text)" : "var(--muted)", borderColor: activeCategories.length === 0 ? "var(--border)" : "transparent" }}
+  >
+    All <span style={{ opacity: 0.7 }}>{activities.length}</span>
+  </button>
+  {CATEGORIES.map((c) => {
+    const count = activities.filter((a) => a.category === c).length;
+    const active = activeCategories.includes(c);
+    return (
+      <button key={c} onClick={() => toggleCategory(c)}
+        style={{ ...chipBase, background: active ? CAT_COLORS[c] + "22" : "transparent", color: active ? CAT_COLORS[c] : "var(--muted)", borderColor: active ? CAT_COLORS[c] : "var(--border)" }}>
+        {c} <span style={{ opacity: 0.7 }}>{count}</span>
+      </button>
+    );
+  })}
+</div>
 
       <div style={{ display: "flex", gap: 6, marginBottom: 16 }}>
         {SORT_OPTIONS.map((s) => (
@@ -116,7 +119,7 @@ export default function ActivityFeed({ activities, onDelete, onEdit, onClear, on
                   </div>
                 </div>
                 <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
-                  <button onClick={() => startEdit(a)} style={{ background: "none", border: "none", cursor: "pointer", color: "var(--muted)", fontSize: "0.78rem", fontFamily: "'JetBrains Mono', monospace" }}>edit</button>
+                  <button onClick={() => startEdit(a)} style={{ background: "none", border: "none", cursor: "pointer", color: "var(--muted)", fontSize: "0.78rem", fontFamily: "'JetBrains Mono', monospace" }}>Edit</button>
                   <button onClick={() => onDelete(a.id)} style={{ background: "none", border: "none", cursor: "pointer", color: "var(--danger)", fontSize: "1rem", lineHeight: 1 }}>✕</button>
                 </div>
               </div>

@@ -7,8 +7,8 @@ const today = new Date().toISOString().split("T")[0];
 
 export default function ActivityForm({ onAdd, activities }) {
   const [name, setName] = useState("");
-  const [category, setCategory] = useState("Academic");
-  const [date, setDate] = useState(today);
+  const [category, setCategory] = useState("");
+  const [date, setDate] = useState("");
   const [error, setError] = useState("");
   const [warning, setWarning] = useState("");
 
@@ -16,6 +16,7 @@ export default function ActivityForm({ onAdd, activities }) {
     e.preventDefault();
     if (!name.trim()) return setError("Activity name cannot be empty.");
     if (name.trim().length > 100) return setError("Name must be 100 characters or fewer.");
+    if (!category) return setError("Please select a category.");
     if (!date) return setError("Please select a date.");
     if (date > today) return setError("Future dates are not allowed.");
     const isDuplicate = activities.some((a) => a.name.toLowerCase() === name.trim().toLowerCase() && a.date === date);
@@ -23,7 +24,7 @@ export default function ActivityForm({ onAdd, activities }) {
     else setWarning("");
     setError("");
     onAdd({ id: Date.now(), name: name.trim(), category, date });
-    setName(""); setDate(today); setCategory("Academic");
+    setName(""); setDate(""); setCategory("");
   }
 
   const field = {
@@ -58,8 +59,9 @@ export default function ActivityForm({ onAdd, activities }) {
 
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
           <select value={category} onChange={(e) => setCategory(e.target.value)} style={{ ...field, cursor: "pointer" }}>
-            {CATEGORIES.map((c) => <option key={c} style={{ background: "var(--surface2)" }}>{c}</option>)}
-          </select>
+  <option value="" disabled style={{ background: "var(--surface2)" }}>Select category</option>
+  {CATEGORIES.map((c) => <option key={c} style={{ background: "var(--surface2)" }}>{c}</option>)}
+</select>
           <input type="date" value={date} max={today} onChange={(e) => setDate(e.target.value)} style={field}
             onFocus={(e) => e.target.style.borderColor = "var(--accent)"}
             onBlur={(e) => e.target.style.borderColor = "var(--border)"}

@@ -1,10 +1,10 @@
 export const CATEGORIES = ["Academic", "Technical", "Cultural", "Sports"];
 
 export const CATEGORY_POINTS = {
-  Technical: 3,
+  Technical: 2,
   Academic: 2,
-  Cultural: 1,
-  Sports: 1,
+  Cultural: 2,
+  Sports: 2,
 };
 
 export const MILESTONES = [

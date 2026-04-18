@@ -15,11 +15,11 @@ Open http://localhost:5173
 
 A single-page React app (Vite) where students can log activities and track their career-readiness milestones.
 
-**Log an Activity** — form with activity name, category (Academic, Technical, Cultural, Sports), and date. Validates for empty or whitespace-only names, enforces a 100-character limit, blocks future dates, and warns on duplicate entries. Resets cleanly after every submit.
+**Log an Activity** — form with activity name, category (Academic, Technical, Cultural, Sports), and date. No defaults — category and date must be explicitly selected. Validates for empty or whitespace-only names, missing category, enforces a 100-character limit, blocks future dates, and warns on duplicate entries. Resets cleanly after every submit.
 
 **Activity Feed** — lists all logged activities with multi-category filtering, a search bar, and sort controls (newest, oldest, A–Z). Each card supports inline editing and deletion. Empty states and no-results states are handled separately.
 
-**PathCredit Score** — each category earns weighted points (Technical: 3, Academic: 2, Cultural: 1, Sports: 1), shown as a running total alongside a day streak counter and category breakdown bar.
+**PathCredit Score** — each category earns weighted points (Technical: 2, Academic: 2, Cultural: 2, Sports: 2), shown as a running total alongside a day streak counter and category breakdown bar.
 
 **Milestone Badges** — earned on first activity per category and at count thresholds (5, 10, 25 activities).
 
